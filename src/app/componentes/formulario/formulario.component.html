@@ -3,68 +3,154 @@
         <div class="card-header">
             1. Datos del perceptor que efectúa la comunicación
         </div>
-        <div class="card-body text-center">
+        <div class="card-body">
             <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-3 col-form-label text-right">NIF/NIE</label>
+                <label for="nif" class="col-sm-3 col-form-label text-right">NIF/NIE</label>
                 <div class="col-sm-2">
-                    <input type="text" class="form-control" id="inputEmail3">
+                    <input type="text" class="form-control" id="nif" formControlName="nif" name="nif">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-3 col-form-label text-right">Apellido y Nombre</label>
+                <label for="apellidosNombre" class="col-sm-3 col-form-label text-right">Apellido y Nombre</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" id="inputEmail3">
+                    <input type="text" class="form-control" id="apellidosNombre" formControlName="apellidosNombre"
+                        name="apellidosNombre">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-3 col-form-label text-right">Código postal residencia</label>
+                <label for="codPostal" class="col-sm-3 col-form-label text-right">Código postal residencia</label>
                 <div class="col-sm-2">
-                    <input type="text" class="form-control" id="inputEmail3">
+                    <input type="text" class="form-control" id="codPostal" formControlName="codPostal" name="codPostal">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-3 col-form-label text-right">Municipio</label>
+                <label for="firmaLugar" class="col-sm-3 col-form-label text-right">Municipio</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" id="inputEmail3">
+                    <input type="text" class="form-control" id="firmaLugar" formControlName="firmaLugar"
+                        name="firmaLugar">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-3 col-form-label text-right">Año de nacimiento</label>
+                <label for="anoNacimiento" class="col-sm-3 col-form-label text-right">Año de nacimiento</label>
                 <div class="col-sm-2">
-                    <input type="number" class="form-control" id="inputEmail3">
+                    <input type="number" class="form-control" id="anoNacimiento" formControlName="anoNacimiento"
+                        name="anoNacimiento">
+                    <small id="anoNacimientoHelp" class="form-text text-muted">AAAA</small>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-3 col-form-label text-right">Situación familiar</label>
-                <div class="col-sm-5">
-                    <input type="number" class="form-control" id="inputEmail3">
-                </div>
-            </div>
-            <fieldset class="form-group">
-                <div class="row">
-                  <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
-                  <div class="col-sm-10">
+                <label for="" class="col-sm-3 col-form-label text-right">Situación familiar</label>
+                <div class="col">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                      <label class="form-check-label" for="gridRadios1">
-                        First radio
-                      </label>
+                        <input formControlName="situacionFamiliar" class="form-check-input" type="radio"
+                            name="situacionFamiliar" id="situacionFamiliar1" value="1">
+                        <label class="form-check-label" for="situacionFamiliar1">
+                            Soltero/a, viudo/a, divorciado/a o separado/a legalmente con hijos solteros menores de 18
+                            años o incapacitados judicialmente y sometidos a patria potestad prorrogada o rehabilitada
+                            que conviven exclusivamente con Vd., sin convivir también con el otro progenitor, siempre
+                            que proceda consignar al menos un hijo o descendiente en el apartado 2 de este documento.
+                        </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                      <label class="form-check-label" for="gridRadios2">
-                        Second radio
-                      </label>
+                        <input formControlName="situacionFamiliar" class="form-check-input" type="radio"
+                            name="situacionFamiliar" id="situacionFamiliar2" value="2">
+                        <label class="form-check-label" for="situacionFamiliar2">
+                            Casado/a y no separado/a legalmente cuyo cónyuge no obtiene rentas superiores a 1.500 euros
+                            anuales, excluidas las exentas 2 X NIF del cónyuge (si ha marcado la casilla 2, deberá
+                            consignar en esta casilla el NIF de su cónyuge).
+                        </label>
+                        <div class="form-group form-inline">
+                            <label for="nifConyuge" class="control-label">NIF / NIE / Pasaporte Cónyuge</label>
+                            <select name="selNifNiePasaporte" id="selNifNiePasaporte" class="form-control tSelect">
+                                <option value="nifNie">NIF / NIE</option>
+                                <option value="pasaporte">Pasaporte</option>
+                            </select>
+                            <input size="15" maxlength="15" name="nifConyuge" id="nifConyuge" class="form-control"
+                                value="" disabled onfocusout="checkNifNie(this.value)">
+                            <div id="nifConyugeVerificador" class="validacion"></div>
+                        </div>
                     </div>
-                    <div class="form-check disabled">
-                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
-                      <label class="form-check-label" for="gridRadios3">
-                        Third disabled radio
-                      </label>
+                    <div class="form-check">
+                        <input formControlName="situacionFamiliar" class="form-check-input" type="radio"
+                            name="situacionFamiliar" id="situacionFamiliar3" value="3">
+                        <label class="form-check-label" for="situacionFamiliar3">
+                            Situación familiar distinta de las dos anteriores (solteros sin hijos, casados cuyo cónyuge
+                            obtiene rentas superiores a 1.500 euros anuales, ..., etc.) (Marque también esta casilla si
+                            no desea manifestar su situación familiar).
+                        </label>
                     </div>
-                  </div>
                 </div>
-              </fieldset>
+            </div>
+
+            <div class="form-group row">
+                <label for="" class="col-sm-3 col-form-label text-right">Discapacidad<small id=""
+                        class="form-text text-muted">(grado de minusvalía reconocido)</small></label>
+                <div class="col">
+                    <div class="form-check">
+                        <input formControlName="discapacidad" class="form-check-input" type="radio" name="discapacidad"
+                            value="0" id="disca0">
+                        <label for="disca0" class="form-check-label">Ninguna</label>
+                    </div>
+                    <div class="form-check">
+                        <input formControlName="discapacidad" class="form-check-input" type="radio" name="discapacidad"
+                            value="1" id="disca1">
+                        <label for="disca1" class="form-check-label">
+                            Igual o superior al 33% e inferior al 65%
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input formControlName="discapacidad" class="form-check-input" type="radio" name="discapacidad"
+                            value="2" id="disca2">
+                        <label for="disca2" class="form-check-label">
+                            Igual o superior al 65%
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" formControlName="discapacidad3"
+                            name="discapacidad3" value="1" id="discapacidad3">
+                        <label for="discapacidad3" class="form-check-label">Además, tiene acreditada la
+                            necesidad de ayuda de terceras personas o movilidad reducida</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="fechaTraslado" class="col-sm-3 col-form-label text-right">Movilidad geográfica<small
+                        class="form-text text-muted">DD/MM/AAAA</small></label>
+                <div class="col">
+                    <div class="form-group form-inline">
+                        <label for="fechaTraslado" class="form-check-label">Si anteriormente estaba Vd. en situación de
+                            desempleo e inscrito en la oficina de empleo y
+                            la aceptación del puesto de trabajo actual ha exigido el traslado de su residencia habitual
+                            a un nuevo municipio, indique la fecha de dicho traslado.</label>
+                        <input type="text" class="form-control" formControlName="fechaTraslado" name="fechaTraslado"
+                            id="fechaTraslado">
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-3 col-form-label text-right">Obtención de rendimientos con período de
+                    generación superior a 2
+                    años durante los 5 períodos impositivos anteriores</label>
+                <div class="col">
+                    <div class="form-group form-inline">
+                        <input formControlName="rendimientos" type="checkbox" id="rendimientos" name="rendimientos"
+                            value="1">
+                        <label for="" class="form-check-label">Marque esta casilla si, en
+                            el plazo comprendido en los 5 períodos impositivos anteriores al ejercicio al que
+                            corresponde la
+                            presente comunicación, ha percibido rendimientos del trabajo con período de generación
+                            superior a 2
+                            años, a los que, a efectos del cálculo del tipo de retención le haya sido aplicada la
+                            reducción por
+                            irregularidad contemplada en el artículo 18.2 de la Ley del Impuesto y, sin embargo,
+                            posteriormente
+                            usted no haya aplicado la citada reducción en su correspondiente autoliquidación del
+                            Impuesto sobre
+                            la Renta.</label>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -184,7 +270,10 @@
             </div>
 
             <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-3 col-form-label text-right">En caso de hijos que convivan únicamente con Vd., sin convivir también con el otro progenitor (padre o madre), o de nietos que convivan únicamente con Vd., sin convivir también con ningún otro de sus abuelos, indíquelo marcando con una "X" esta casilla.</label>
+                <label for="inputEmail3" class="col-sm-3 col-form-label text-right">En caso de hijos que convivan
+                    únicamente con Vd., sin convivir también con el otro progenitor (padre o madre), o de nietos que
+                    convivan únicamente con Vd., sin convivir también con ningún otro de sus abuelos, indíquelo marcando
+                    con una "X" esta casilla.</label>
                 <div class="col-sm-2 text-center">
                     <input type="checkbox" class="form-check-input" id="inputEmail3">
                 </div>
@@ -239,8 +328,11 @@
                 </label>
             </div>
             <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-3 col-form-label text-right">Ascendientes con discapacidad</label>
-                <label for="inputEmail3" class="col-sm-8 col-form-label text-left">Si alguno de los ascendientes tiene reconocido un grado de minusvalía igual o superior al 33 por 100, marque con una "X" la/s casilla/s que corresponda/n a su situación.
+                <label for="inputEmail3" class="col-sm-3 col-form-label text-right">Ascendientes con
+                    discapacidad</label>
+                <label for="inputEmail3" class="col-sm-8 col-form-label text-left">Si alguno de los ascendientes tiene
+                    reconocido un grado de minusvalía igual o superior al 33 por 100, marque con una "X" la/s casilla/s
+                    que corresponda/n a su situación.
                 </label>
             </div>
             <div class="form-group row">
@@ -248,14 +340,16 @@
                 <div class="col-sm-2 text-muted text-center">Ascendiente 2</div>
             </div>
             <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-3 col-form-label text-right">Año de nacimiento</label>
+                <label for="asc1AnoNacimiento" class="col-sm-3 col-form-label text-right">Año de nacimiento</label>
                 <div class="col-sm-2">
-                    <input type="number" class="form-control" id="inputEmail3">
-                    <small id="emailHelp" class="form-text text-muted">AAAA</small>
+                    <input formControlName="asc1AnoNacimiento" name="asc1AnoNacimiento" type="number"
+                        class="form-control" id="asc1AnoNacimiento">
+                    <small id="asc1AnoNacimiento" class="form-text text-muted">AAAA</small>
                 </div>
                 <div class="col-sm-2">
-                    <input type="email" class="form-control" id="inputEmail3">
-                    <small id="emailHelp" class="form-text text-muted">AAAA</small>
+                    <input formControlName="asc2AnoNacimiento" name="asc2AnoNacimiento" type="number"
+                        class="form-control" id="asc2AnoNacimiento">
+                    <small id="asc2AnoNacimiento" class="form-text text-muted">AAAA</small>
                 </div>
             </div>
             <div class="form-group row">
@@ -263,46 +357,52 @@
                         class="form-text text-muted">(grado de minusvalía reconocido)</small></label>
 
                 <div class="col-sm-2">
-                    <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                        <option selected>Choose...</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <select formControlName="asc1GDiscapacidad" name="asc1GDiscapacidad"
+                        class="form-control custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                        <option value="-1">Seleccione</option>
+                        <option value="0">Ninguna</option>
+                        <option value="1">Igual o superior al 33% e inferior al 65%</option>
+                        <option value="2">Igual o superior al 65%</option>
                     </select>
                 </div>
                 <div class="col-sm-2">
-                    <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                        <option selected>Choose...</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <select formControlName="asc2GDiscapacidad" name="asc2GDiscapacidad"
+                        class="form-control custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                        <option value="-1">Seleccione</option>
+                        <option value="0">Ninguna</option>
+                        <option value="1">Igual o superior al 33% e inferior al 65%</option>
+                        <option value="2">Igual o superior al 65%</option>
                     </select>
                 </div>
             </div>
 
             <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-3 col-form-label text-right">Además, tiene acreditada la
+                <label for="" class="col-sm-3 col-form-label text-right">Además, tiene acreditada la
                     necesidad de ayuda de terceras personas o movilidad reducida</label>
                 <div class="col-sm-2 text-center">
-                    <input type="checkbox" class="form-check-input" id="inputEmail3">
+                    <input type="checkbox" class="form-check-input" formControlName="asc1GDiscapacidad3"
+                        name="asc1GDiscapacidad3" value="1">
                 </div>
                 <div class="col-sm-2 text-center">
-                    <input type="checkbox" class="form-check-input" id="inputEmail3">
+                    <input type="checkbox" class="form-check-input" formControlName="asc2GDiscapacidad3"
+                        name="asc2GDiscapacidad3" value="1">
                 </div>
             </div>
 
             <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-3 col-form-label text-right">Si alguno de los ascendientes
+                <label for="" class="col-sm-3 col-form-label text-right">Si alguno de los ascendientes
                     convive también, al menos durante la mitad del año, con otros descendientes del mismo grado que Vd.,
                     indique
                     en esta casilla el número total de descendientes con los que convive, incluido Vd. (Si los
                     ascendientes sólo
                     conviven</label>
                 <div class="col-sm-2 text-center">
-                    <input type="checkbox" class="form-check-input" id="inputEmail3">
+                    <input type="checkbox" class="form-check-input" id="asc1Convivencia"
+                        formControlName="asc1Convivencia" name="asc1Convivencia" value="1">
                 </div>
                 <div class="col-sm-2 text-center">
-                    <input type="checkbox" class="form-check-input" id="inputEmail3">
+                    <input type="checkbox" class="form-check-input" id="asc2Convivencia"
+                        formControlName="asc2Convivencia" name="asc2Convivencia" value="1">
                 </div>
             </div>
 
